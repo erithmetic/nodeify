@@ -12,5 +12,4 @@ module Nodeify
       app.assets.register_bundle_processor 'application/javascript', Nodeify::JavaScript
     end
   end
-
 end
