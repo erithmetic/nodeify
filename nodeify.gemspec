@@ -21,5 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 3.1.0.rc8'
   s.add_dependency 'sandbox'
   s.add_dependency 'sprockets'
+  s.add_development_dependency 'jeweler'
   s.add_development_dependency 'rspec'
 end
