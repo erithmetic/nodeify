@@ -6,7 +6,6 @@ Bring CLI testing and npm modules to your JavaScript.
 
 Install Node.js and npm:
 
-@@@ sh
     $ port install nodejs
     $ curl http://npmjs.org/install.sh | sh
 
@@ -16,10 +15,8 @@ Nodeify is designed to work with Rails 3.1 and higher.
 
 In your Gemfile:
 
-@@@ ruby
     gem 'nodeify'
 
-@@@ sh
     $ bundle update
     $ rails g nodeify:install
 
@@ -45,7 +42,6 @@ In the meantime, google CommonJS modules.
 
 In your app's root directory, add any npm module dependencies to package.json file, just like any Node.js server app or npm module. Nodeify will add a default package.json for you. Npm dependencies look like:
 
-@@@ javascript
     "dependencies": {
       "jquery-browserify": ">= 1.3.x",
       "jsonpath": "*"
@@ -56,7 +52,6 @@ In your app's root directory, add any npm module dependencies to package.json fi
 
 Once you've updated dependencies, you can install the newest modules with
 
-@@@ sh
     $ npm install
 
 ## Asset Pipeline Misc.
