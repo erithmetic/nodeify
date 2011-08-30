@@ -1,0 +1,8 @@
+{
+  "name": "hootroot",
+  "version": "0.0.1",
+  "engine": "*",
+  "dependencies": {
+    "browserify": "*"
+  }
+}
