@@ -11,6 +11,8 @@ doc
 # bundler
 .bundle
 
+node_modules
+
 # jeweler generated
 pkg
 
