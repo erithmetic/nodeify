@@ -11,7 +11,7 @@ module Nodeify
         File.open(js_file, 'w') do |f|
           f.puts <<-JAVASCRIPT
 var browserify = require('browserify');
-var b = browserify({ entry: '#{file}' });
+var b = browserify({ entry: '#{file}', require: { http: 'http-browserify' } });
 process.stdout.write(b.bundle());
           JAVASCRIPT
         end
