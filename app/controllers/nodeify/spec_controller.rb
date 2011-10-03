@@ -1,4 +1,4 @@
-module Jasminerice
+module Nodeify
   class SpecController <  ApplicationController
     layout false
 

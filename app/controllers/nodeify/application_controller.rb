@@ -1,4 +1,4 @@
-module Jasminerice
+module Nodeify
   class ApplicationController < ActionController::Base
   end
 end
