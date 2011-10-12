@@ -22,6 +22,11 @@ JSON
         end
       end
 
+      def install_npm_modules
+        rake "npm:install"
+        append_to_file ".gitignore", "vendor/node_modules"
+      end
+
     end
   end
 end
