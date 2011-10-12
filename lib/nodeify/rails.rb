@@ -11,5 +11,9 @@ module Nodeify
       app.assets.unregister_preprocessor 'application/javascript', Sprockets::DirectiveProcessor
       app.assets.register_bundle_processor 'application/javascript', Nodeify::JavaScript
     end
+
+    rake_tasks do
+      load 'nodeify/tasks/npm.rake'
+    end
   end
 end
