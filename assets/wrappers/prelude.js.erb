@@ -11,7 +11,7 @@ var __require = require;
 
 require.paths = [];
 require.modules = {};
-require.extensions = <%= extensions %>;
+require.extensions = <%= MultiJson.encode(extensions) %>;
 
 require._core = {
     'assert': true,

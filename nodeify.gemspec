@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sandbox'
   s.add_dependency 'sprockets'
   s.add_development_dependency 'jeweler'
-  s.add_development_dependency 'rspec'
   s.add_development_dependency 'json'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'sandbox'
 end
