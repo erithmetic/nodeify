@@ -1,0 +1,7 @@
+{
+  "name": "naive",
+  "devDependencies": {
+    "browserify": "*",
+  },
+  "engine": "*"
+}
