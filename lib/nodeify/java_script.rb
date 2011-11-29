@@ -4,21 +4,10 @@ require 'sandbox'
 
 module Nodeify
   class JavaScript < Sprockets::Processor
-    def render(context, options)
-      source = ''
-      Sandbox.play :path => 'tmp' do |path|
-        js_file = File.join(path, 'nodeify.js')
-        File.open(js_file, 'w') do |f|
-          f.puts <<-JAVASCRIPT
-var browserify = require('browserify');
-var b = browserify({ entry: '#{file}', require: { http: 'http-browserify' } });
-process.stdout.write(b.bundle());
-          JAVASCRIPT
-        end
-        @source = `node #{js_file}` # TODO: ExecJS failed me here. Also, node can't seem to accept pipes
-      end
+    BIN = File.expand_path('../../../bin/nodeify', __FILE__)
 
-      @source
+    def render(context, options)
+      @source = `node #{BIN} #{file}`
     end
   end
 end

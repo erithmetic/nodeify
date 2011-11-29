@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var browserify = require('browserify');
+var b = browserify({
+  entry: process.argv[1],
+  require: { http: 'dkastner-http-browserify' }
+});
+
+process.stdout.write(b.bundle());
+
