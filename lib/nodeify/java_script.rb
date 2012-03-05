@@ -1,13 +1,10 @@
-require 'execjs'
 require 'sprockets'
-require 'sandbox'
 
 module Nodeify
   class JavaScript < Sprockets::Processor
-    BIN = File.expand_path('../../../bin/nodeify', __FILE__)
-
     def render(context, options)
-      @source = `node #{BIN} #{file}`
+      @source = `node -e "var browserify = require('browserify'), _ = process.stdout.write(browserify({ entry: '#{file}', require: { http: 'dkastner-http-browserify' } }).bundle());"`
+      @source
     end
   end
 end

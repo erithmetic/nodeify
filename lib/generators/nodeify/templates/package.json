@@ -2,6 +2,7 @@
   "name": "naive",
   "devDependencies": {
     "browserify": "*",
+    "dkastner-http-browserify": "*",
   },
   "engine": "*"
 }
