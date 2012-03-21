@@ -1,6 +1,20 @@
 # nodeify
 
-Bring CLI testing and npm modules to your JavaScript.
+Bring CLI testing and npm modules to your Rails JavaScript.
+
+What it does:
+* Allows you to use CommonJS require() statements in your javascript.
+* Allows you to place code in separate files (modules) for organization and re-use purposes.
+* Allows you to include Node.js packages in your client-side JavaScript.
+
+Why this is cool:
+* Code organization!
+* Test your JavaScript from the command-line using the myriad testing libraries available from npm, such as [buster.js](http://busterjs.org), [vows.js](http://vowsjs.org), [tap](http://github.com/isaacs/node-tap), and, if you have to, [jasmine-node](http://github.com/mhevery/jasmine-node/).
+* Use the ultimate "rubygems" of the JavaScript world - npm - and stop waiting for someone to package your favorite JS library in a gem or some other lesser-known package format.
+
+What this all means:
+
+You'll have to wrap your head around the CommonJS/npm module system. It's quite a bit different than rubygems, but is a very clean module system.
 
 ## Requirements
 
@@ -30,15 +44,36 @@ As with any Rails JS with the asset pipeline, put your app-specific JavaScripts 
 
 ### require()
 
-Under the standard Rails asset pipeline regime, the sprockets gem is used to manage JavaScript file loading/dependencies through the `//= require xxx` syntax. With Nodeify, your javascripts fit into the standard CommonJS modules framework. You can use `var MyLib = require('./xxx')` statements that are relative to your `app/assets/javascripts` directory and `lib/assets/javascripts` directory (both paths are added to NODE_PATHS). You can also use require() to load Node.js npm modules (see below).
+Under the standard Rails asset pipeline regime, the Sprockets gem is used to manage JavaScript file loading/dependencies through the `//= require xxx` syntax. With Nodeify, your javascripts fit into the standard CommonJS modules framework. You can use `var MyLib = require('./xxx')` statements that are relative to your `app/assets/javascripts` directory. You can also use require() to load Node.js npm modules (see below).
+
+Note that you cannot require anything outside of app/assets/javascripts. This is OK because anything that would go into lib/assets or vendor/assets should probably be its own npm module, anyway. At the very least you can dump extra libraries into app/assets/javascripts/lib and require them with `var foo = require('lib/foo');`.
 
 #### Understanding require()
 
-The CommonJS require() works a bit differently than Ruby's require or the sprockets //= require. CommonJS isolates modules (any code grouped into a file) into its own environment. Variables defined local to the module will only be available in that module. To expose certain objects...
+The CommonJS require() works a bit differently than Ruby's require or the sprockets //= require. CommonJS isolates modules (any code grouped into a file) into its own environment. Variables defined local to the module will only be available in that module. Here are a couple of quick examples:
 
-TODO: Explanation
+    // in app/assets/javascripts/lib/misc.js
+    exports.cool = function() {
+      console.log('exports are cool');
+    };
 
-In the meantime, google CommonJS modules.
+    // in app/assets/javascripts/my-class.js
+    var MyClass = function() { };
+    MyClass.prototype.cool = function() {
+      console.log('prototypes are cool');
+    };
+    module.exports = MyClass;     // note that it's module.exports
+
+    // in app/assets/javascripts/application.js
+    var misc = require('./lib/misc'),
+        MyClass = require('./my-class'),
+        _ = require('underscore');  // this is an npm module
+
+    misc.cool();
+    var klass = new MyClass();
+    klass.cool();
+    _.each([1,2], function(i) { console.log(i); });
+
 
 ### Node modules
 
