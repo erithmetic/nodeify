@@ -1,25 +1,19 @@
 require 'tilt'
 require 'sandbox'
+require 'sprockets'
 
 module Nodeify
-  class JavaScript < Tilt::Template
-    attr_accessor :body
-
-    def initialize(*arg)
+  class JavaScript < Sprockets::DirectiveProcessor
+    def evaluate(context, options, &blk)
       super
-    end
 
-    def prepare
-    end
-
-    def evaluate(context, options)
-      output = ''
       Sandbox.play do |path|
         file_path = File.join(path, File.basename(file))
-        File.open(file_path, 'w') { |f| f.puts data }
-        output = `node -e "var browserify = require('browserify'), _ = process.stdout.write(browserify({ entry: '#{file_path}', require: { http: 'dkastner-http-browserify' } }).bundle());"`
+        File.open(file_path, 'w') { |f| f.puts @result }
+        @result = `node -e "var browserify = require('browserify'), _ = process.stdout.write(browserify({ entry: '#{file_path}', require: { http: 'dkastner-http-browserify' } }).bundle());"`
       end
-      output
+
+      @result
     end
   end
 end
