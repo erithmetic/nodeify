@@ -3,11 +3,13 @@
 Bring CLI testing and npm modules to your Rails JavaScript.
 
 What it does:
+
 * Allows you to use CommonJS require() statements in your javascript.
 * Allows you to place code in separate files (modules) for organization and re-use purposes.
 * Allows you to include Node.js packages in your client-side JavaScript.
 
 Why this is cool:
+
 * Code organization!
 * Test your JavaScript from the command-line using the myriad testing libraries available from npm, such as [buster.js](http://busterjs.org), [vows.js](http://vowsjs.org), [tap](http://github.com/isaacs/node-tap), and, if you have to, [jasmine-node](http://github.com/mhevery/jasmine-node/).
 * Use the ultimate "rubygems" of the JavaScript world - npm - and stop waiting for someone to package your favorite JS library in a gem or some other lesser-known package format.
