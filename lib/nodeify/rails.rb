@@ -10,5 +10,9 @@ module Nodeify
       app.assets.unregister_processor 'application/javascript', Sprockets::DirectiveProcessor
       app.assets.register_engine '.js', Nodeify::JavaScript
     end
+
+    rake_tasks do
+      load 'nodeify/tasks/npm.rake'
+    end
   end
 end
