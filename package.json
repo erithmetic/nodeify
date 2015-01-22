@@ -2,8 +2,8 @@
   "name": "hootroot",
   "version": "0.0.1",
   "engine": "*",
-  "dependencies": {
+  "devDependencies": {
     "browserify": "*",
-    "dkastner-http-browserify": "*"
+    "http-browserify": "git://github.com/dkastner/http-browserify.git"
   }
 }
