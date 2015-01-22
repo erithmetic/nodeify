@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
   
-  s.add_dependency 'rails', '~> 3.1'
+  s.add_dependency 'rails', '~> 4.1'
   s.add_dependency 'sandbox'
   s.add_dependency 'tilt'
   s.add_development_dependency 'jeweler'
